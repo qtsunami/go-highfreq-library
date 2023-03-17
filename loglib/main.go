@@ -17,14 +17,23 @@ func main() {
 	defer f.Close()
 
 	log := &logrus.Logger{
-		Out:       io.MultiWriter(f, os.Stdout),
-		Level:     logrus.DebugLevel,
-		Formatter: &logrus.TextFormatter{},
+		Out:   io.MultiWriter(f, os.Stdout),
+		Level: logrus.DebugLevel,
+		Formatter: &logrus.TextFormatter{
+			FullTimestamp:          true,
+			TimestampFormat:        "2006-01-02 15:04:05",
+			ForceColors:            true,
+			DisableLevelTruncation: true,
+			ForceQuote:             true,
+		},
 	}
 
 	log.SetReportCaller(true)
 
-	log.Info("Info Level")
+	log.WithFields(logrus.Fields{
+		"Lang":    "Zh-cn",
+		"Country": "Chinese",
+	}).Info("Info Level")
 	log.Warn("Warn Level")
 	log.Error("Error Level")
 	log.Fatal("Fatal Level")
