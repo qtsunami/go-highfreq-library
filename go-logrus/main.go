@@ -31,8 +31,9 @@ func main() {
 	log.SetReportCaller(true)
 
 	log.WithFields(logrus.Fields{
-		"Lang":    "Zh-cn",
-		"Country": "Chinese",
+		"request_id": "887B4F43-D330-5213-94DF-1B14FA3388C",
+		"ip":         "101.202.112.12",
+		"user_id":    10022,
 	}).Info("Info Level")
 	log.Warn("Warn Level")
 	log.Error("Error Level")
