@@ -3,7 +3,7 @@ package util
 import "github.com/sirupsen/logrus"
 
 type Logger struct {
-	logrus.Logger
+	*logrus.Logger
 }
 
 const (
@@ -16,5 +16,11 @@ const (
 )
 
 func NewLogger() *Logger {
-	return &Logger{}
+	return &Logger{
+		logrus.New(),
+	}
+}
+
+func (l Logger) LogHandler(m map[string]interface{}) *logrus.Entry {
+	return l.WithFields(m)
 }

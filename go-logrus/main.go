@@ -12,6 +12,17 @@ func main() {
 	logger.SetLevel(util.DebugLevel)
 
 	logger.Warnln("Hello")
+	logger.WithFields(map[string]interface{}{
+		"Name": "rr",
+	}).Info("HHHH")
+
+	httpLog := logger.LogHandler(map[string]interface{}{
+		"name": "Lee",
+		"age":  29,
+	})
+
+	httpLog.Warn("request failed!")
+
 }
 
 func logtofile() {
