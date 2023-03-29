@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/sirupsen/logrus"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"time"
@@ -45,4 +46,14 @@ func main() {
 	fmt.Println(result.Error, result.RowsAffected)
 	fmt.Println(user[0].Age, user[1].Age)
 
+}
+
+func logger() {
+	logger := logrus.New()
+
+	logger.SetFormatter(&logrus.TextFormatter{
+		ForceColors:     true,
+		FullTimestamp:   true,
+		TimestampFormat: "2006-01-02 15:04:05",
+	})
 }

@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/go-highfreq-library/go-logrus/util"
+	"github.com/sirupsen/logrus"
 	"os"
 )
 
@@ -11,17 +12,25 @@ func main() {
 	logger.SetOutput(os.Stdout)
 	logger.SetLevel(util.DebugLevel)
 
-	logger.Warnln("Hello")
-	logger.WithFields(map[string]interface{}{
-		"Name": "rr",
-	}).Info("HHHH")
-
-	httpLog := logger.LogHandler(map[string]interface{}{
-		"name": "Lee",
-		"age":  29,
+	logger.SetFormatter(&logrus.TextFormatter{
+		ForceColors:     true,
+		FullTimestamp:   true,
+		TimestampFormat: "2006-01-02 15:04:05",
 	})
 
-	httpLog.Warn("request failed!")
+	//logger.SetFormatter(&util.CustomFormatter{})
+
+	logger.Warnln("Hello")
+	//logger.WithFields(map[string]interface{}{
+	//	"Name": "rr",
+	//}).Info("HHHH")
+	//
+	//httpLog := logger.LogHandler(map[string]interface{}{
+	//	"name": "Lee",
+	//	"age":  29,
+	//})
+	//
+	//httpLog.Warn("request failed!")
 
 }
 
