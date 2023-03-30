@@ -12,15 +12,27 @@ func main() {
 	logger.SetOutput(os.Stdout)
 	logger.SetLevel(util.DebugLevel)
 
-	logger.SetFormatter(&logrus.TextFormatter{
-		ForceColors:     true,
-		FullTimestamp:   true,
-		TimestampFormat: "2006-01-02 15:04:05",
-	})
+	//logger.SetFormatter(&logrus.TextFormatter{
+	//	ForceColors:     true,
+	//	FullTimestamp:   true,
+	//	TimestampFormat: "2006-01-02 15:04:05",
+	//})
 
-	//logger.SetFormatter(&util.CustomFormatter{})
+	logger.SetFormatter(&util.CustomFormatter{})
 
-	logger.Warnln("Hello")
+	logger.WithFields(logrus.Fields{
+		"name": map[string]int{
+			"rosa":    10,
+			"zhaoli":  15,
+			"liuying": 10,
+			"swen":    12,
+			"man":     8,
+			"haoyue":  15,
+		},
+		"age":     22,
+		"time":    "1010010",
+		"message": "12314edf",
+	}).Warnln("Hello s")
 	//logger.WithFields(map[string]interface{}{
 	//	"Name": "rr",
 	//}).Info("HHHH")
