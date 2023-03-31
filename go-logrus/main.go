@@ -12,13 +12,13 @@ func main() {
 	logger.SetOutput(os.Stdout)
 	logger.SetLevel(util.DebugLevel)
 
-	//logger.SetFormatter(&logrus.TextFormatter{
-	//	ForceColors:     true,
-	//	FullTimestamp:   true,
-	//	TimestampFormat: "2006-01-02 15:04:05",
-	//})
+	logger.SetFormatter(&logrus.TextFormatter{
+		ForceColors:     true,
+		FullTimestamp:   true,
+		TimestampFormat: "2006-01-02 15:04:05",
+	})
 
-	logger.SetFormatter(&util.CustomFormatter{})
+	//logger.SetFormatter(&util.CustomFormatter{})
 
 	logger.WithFields(logrus.Fields{
 		"name": map[string]int{
